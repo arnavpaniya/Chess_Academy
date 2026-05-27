@@ -130,7 +130,7 @@ export default function Home() {
     setIsSimulationPlaying(false);
   };
 
-  const handleScrollToSection = (sectionId: string) => {
+  const handleScrollToSection = (sectionId: "hero" | "training" | "coaches" | "resources" | "academy-profile" | "learning-levels") => {
     const el = document.getElementById(sectionId);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -161,14 +161,14 @@ export default function Home() {
   return (
     <div className="relative font-body bg-transparent text-white no-scrollbar selection:bg-gold selection:text-black">
       {/* Fixed background that scrubs frames based on scroll */}
-      <div className="fixed inset-0 w-full h-full pointer-events-none z-[-10] overflow-hidden bg-black">
+      <div className="fixed inset-0 w-full h-full pointer-events-none -z-10 overflow-hidden bg-black">
         <CinematicBackground scrollYProgress={scrollYProgress} />
       </div>
 
       <Navbar onScrollToSection={handleScrollToSection} onBookClick={handleStartJourney} />
       
       <main className="w-full relative z-10 flex flex-col items-center">
-        <section id="hero" className="w-full min-h-[100vh] flex flex-col">
+        <section id="hero" className="w-full min-h-screen flex flex-col">
           <HeroSection
             onStartTraining={handleStartJourney}
             onWatchGameplay={() => {
@@ -211,7 +211,8 @@ export default function Home() {
           <LearningLevels />
         </motion.section>
 
-        <motion.section 
+        <motion.section
+          id="training"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -255,7 +256,7 @@ export default function Home() {
               opacity: 0,
               transition: { duration: 1, ease: [0.76, 0, 0.24, 1] }
             }}
-            className="fixed inset-0 bg-black z-[1000] flex flex-col justify-center items-center overflow-hidden"
+            className="fixed inset-0 bg-black z-1000 flex flex-col justify-center items-center overflow-hidden"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.06),transparent_60%)] pointer-events-none" />
             
@@ -277,7 +278,7 @@ export default function Home() {
                   className="absolute w-28 h-28 border border-white/5 rounded-full"
                 />
                 
-                <div className="absolute w-24 h-24 flex items-center justify-center bg-black/40 rounded-full backdrop-blur-sm p-2 border border-white/10 shadow-[0_12px_24px_rgba(0,0,0,0.6),_inset_0_4px_6px_rgba(255,255,255,0.15)]">
+                <div className="absolute w-24 h-24 flex items-center justify-center bg-black/40 rounded-full backdrop-blur-sm p-2 border border-white/10 shadow-[0_12px_24px_rgba(0,0,0,0.6),inset_0_4px_6px_rgba(255,255,255,0.15)]">
                   <img
                     src="/ChatGPT_Image_May_21__2026__11_38_34_PM-removebg-preview.png"
                     className="w-16 h-16 object-contain animate-pulse"
@@ -305,12 +306,12 @@ export default function Home() {
                 </motion.p>
               </div>
 
-              <div className="relative mt-12 w-48 h-[1px] bg-white/10 rounded-full overflow-hidden">
+              <div className="relative mt-12 w-48 h-px bg-white/10 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ left: "-100%" }}
                   animate={{ left: "100%" }}
                   transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                  className="absolute w-1/2 h-full bg-gradient-to-r from-transparent via-gold to-transparent"
+                  className="absolute w-1/2 h-full bg-linear-to-r from-transparent via-gold to-transparent"
                 />
               </div>
 
@@ -333,14 +334,14 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-xl z-[100] flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/80 backdrop-blur-xl z-100 flex items-center justify-center p-4"
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 30 }}
               transition={{ type: "spring", damping: 25, stiffness: 350 }}
-              className="clay-card border border-white/10 rounded-[1.5rem] w-full max-w-lg p-8 relative flex flex-col items-center justify-center shadow-2xl text-center"
+              className="clay-card border border-white/10 rounded-3xl w-full max-w-lg p-8 relative flex flex-col items-center justify-center shadow-2xl text-center"
             >
               <button
                 onClick={resetBookingForm}
@@ -466,13 +467,13 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-xl z-[100] flex items-center justify-center p-4 overflow-y-auto"
+            className="fixed inset-0 bg-black/90 backdrop-blur-xl z-100 flex items-center justify-center p-4 overflow-y-auto"
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 30 }}
-              className="clay-card-strong border border-white/10 rounded-[1.5rem] w-full max-w-4xl p-6 md:p-8 relative grid grid-cols-1 md:grid-cols-12 gap-8 shadow-2xl"
+              className="clay-card-strong border border-white/10 rounded-3xl w-full max-w-4xl p-6 md:p-8 relative grid grid-cols-1 md:grid-cols-12 gap-8 shadow-2xl"
             >
               <button
                 onClick={() => {
