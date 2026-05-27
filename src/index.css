@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Instrument Serif", serif;
+  --font-body: "Barlow", sans-serif;
+  --color-gold: #C9A84C;
+  --color-ivory: #F5F0E8;
+  --radius-default: 9999px;
+}
+
+@layer utilities {
+  /* Hide scrollbars but keep functionality */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Sophisticated Dark Atmosphere Layout Gradients */
+  .atmosphere {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    opacity: 0.65;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Sophisticated Dot grid backpattern overlays */
+  .dot-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+    background-size: 40px 40px;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Claymorphic 3D Double-Shadow Glass Styling */
+  .clay-card {
+    background: rgba(255, 255, 255, 0.035) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
+                inset 0 4px 6px rgba(255, 255, 255, 0.12),
+                inset 0 -4px 6px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  .clay-card-strong {
+    background: rgba(255, 255, 255, 0.065) !important;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.7),
+                inset 0 4px 8px rgba(255, 255, 255, 0.22),
+                inset 0 -4px 8px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .clay-btn {
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4),
+                inset 0 2.5px 4px rgba(255, 255, 255, 0.14),
+                inset 0 -2.5px 4px rgba(0, 0, 0, 0.45) !important;
+  }
+
+  .clay-btn-gold {
+    background: #C9A84C !important;
+    color: #000000 !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 8px 18px rgba(201, 168, 76, 0.25),
+                inset 0 3px 5px rgba(255, 255, 255, 0.55),
+                inset 0 -3px 5px rgba(0, 0, 0, 0.38) !important;
+  }
+}
+
